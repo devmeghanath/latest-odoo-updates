@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="category_estate_management" model="ir.module.category">
+            <field name="name">estate management </field>
+            <field name="sequence" eval="1"/>
+        </record>
+       <record id="estate_management_manager_group" model="res.groups">
+           <field name="name">estate manager</field>
+           <field name="category_id" ref="category_estate_management"/>
+<!--           <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+       </record>
+
+        <record id="only_see_his/her_property_rule" model="ir.rule">
+            <field name="name">only see his/her property</field>
+            <field ref="model_estate_property" name="model_id"/>
+            <field name="domain_force">[('user_id', '=',user.id)]</field>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+            <!-- You can attach this rule to a specific group, Or make it Global -->
+            <field name="groups" eval="[(4, ref('estate_management_manager_group'))]"/>
+            <!--<field name="global" eval="1"/> -->
+        </record>
+
+
+    </data>
+</odoo>

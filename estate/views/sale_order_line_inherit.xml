@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="inherited_sale_order_line_view" model="ir.ui.view">
+            <field name="name">inherited sale</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.sale_order_line_view_form_readonly"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//sheet" position="replace">
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record id = "account_move_line_delivery" model="ir.ui.view" >
+            <field name="name" >account.move.delivery </field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref ="account.view_move_form" />
+            <field name="arch" type ="xml" >
+                <xpath expr = "//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position = "before" >
+                    <field name = "sample" />
+                </xpath>
+            </field>
+        </record>
+
+        <template id="inherited_account_invoing" inherit_id="account.report_payment_receipt_document">
+
+            <xpath expr="//div[@class='page']/h3" position="replace">
+<!--                     <strong class="mr16">Subtotal</strong>-->
+<!--                     <span t-field="doc.property_id"/>-->
+                    <h3><strong>Payment Receipt: <span t-field="o.journal_id"/></strong></h3>
+
+                </xpath>
+
+
+        </template>
+
+
+    </data>
+</odoo>

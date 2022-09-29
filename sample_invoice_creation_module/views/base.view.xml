@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="base_model_action" model="ir.actions.act_window">
+            <field name="name">base_model_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sample.module</field>
+            <field name="context">{'default_partner' :'Azure Interior'}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="base_module_view_tree" model="ir.ui.view">
+            <field name="name">base_module_view_tree</field>
+            <field name="model">sample.module</field>
+            <field name="arch" type="xml">
+                <tree string="base_module_tree">
+                    <field name="partner_id"/>
+                    <field name="partner"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sample_module_view_form" model="ir.ui.view">
+            <field name="name">sample_module_view_form</field>
+            <field name="model">sample.module</field>
+            <field name="arch" type="xml">
+                <form string="sample_module_form">
+                    <header>
+                        <button class="btn-success" name="action_invoice" type="object" string="create_invoice"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="partner"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

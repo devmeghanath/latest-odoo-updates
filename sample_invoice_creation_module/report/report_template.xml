@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_sample_module_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+
+                        <div>
+                            <span t-esc="doc.partner_id.name"></span>
+                        </div>
+                        <div>
+                            <span t-esc="doc.partner"></span>
+                        </div>
+
+
+                    </t>
+                </t>
+
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

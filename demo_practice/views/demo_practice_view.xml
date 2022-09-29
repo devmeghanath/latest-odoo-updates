@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="demo_practice_view" model="ir.actions.act_window">
+        <field name="name">demo practice</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">demo.practice</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+         <record id="demo_practice_view_tree" model="ir.ui.view">
+        <field name="name">demo_practice_view_tree</field>
+        <field name="model">demo.practice</field>
+        <field name="arch" type="xml">
+            <tree string="demo_practice_tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+        <record id="demo_practice_view_form" model="ir.ui.view">
+        <field name="name">demo_practice_view_form</field>
+        <field name="model">demo.practice</field>
+        <field name="arch" type="xml">
+            <form string="demo_practice_form">
+                <header>
+                    <button class="btn-danger" name="%(estate.estate_property_view)d" type="action" string="open estate "/>
+                    <button class="btn-success" name="%(view_invoice_wizard_action)d" type="action" string="get invoices"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="user_id"/>
+
+
+
+
+                    </group>
+                    <notebook>
+                        <page name="Description" string="Description">
+                            <group>
+                                <field name="new_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+
+    </data>
+</odoo>
+

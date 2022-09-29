@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="estate_property_view" model="ir.actions.act_window">
+        <field name="name">estate property</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{'search_default_available_properties':True}</field>
+    </record>
+
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">estate_property_view_tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="estate_property_tree">
+                <field name="property_type_id"/>
+                <field name="name"/>
+                <field name="postcode" invisible="True"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="state"/>
+                <field name="expected_price" sum="expected sum" decoration-success="state  == 'sold'"   widget="badge"/>
+                <field name="selling_price" sum="selling price"/>
+                <field name="currency_id"/>
+                <field name="available_from" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate_property_view_form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="estate_property_form">
+                <header>
+
+                    <button name="action_sold" type="object" string="Sold_out" confirm="are you sure to sold this property"
+                            attrs="{'invisible':['|',('state','=','sold'),('state','=','cancel')]}"
+                            help="by clicking sold you can sold this property"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            attrs="{'invisible':['|',('state','=','sold'),('state','=','cancel')]}"/>         help="by clicking sold you can sold this property"/>
+                    <button class="btn btn-danger" name="action_demo" type="object" string="Demo"/>
+                    <button class="btn-danger" name="new_delete_action" type="object" string="Delete Property"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer_accepted,sold,cancelled"
+                           options="{'clickable':'1'}"
+                           attrs="{'invisible':['|',('state','=','sold'),('state','=','cancelled')]}"/>
+
+
+                </header>
+                <sheet>
+
+                    <div>
+                        <h2>
+                            <field name="ref" readonly="True"/>
+                        </h2>
+                        <h1>
+                            <field name="priority" widget="priority"/>
+                            <field name="image" widget="image" class="oe_avatar"/>
+                        </h1>
+                    </div>
+                    <div class="oe_title">
+
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+
+                        </h1>
+                    </div>
+                    <div>
+                        <field name="property_tag_ids" widget="many2many_tags"
+                               options="{'no_create':True,'color_field':'color','no_edit_color':True}"
+                               placeholder="Tags"/>
+
+                    </div>
+
+                    <!--                    </group>-->
+                    <group>
+
+                        <group>
+                            <field name="postcode"/>
+                            <field name="available_from"/>
+                            <field name="property_type_id" options="{'no_create_edit':True, 'no_quick_create':True}"/>
+                            <field name="active"/>
+                            <field name="company_id"/>
+                            <field name="currency_id" invisible="True"/>
+
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                            <field name="best_price"/>
+                            <field name="total_valuation"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Description" string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage" widget="boolean_toggle"
+                                       options='{"active": "Reported in last payslips", "inactive": "To Report in Payslip"}'/>
+                                <field name="garden" widget="boolean_toggle"/>
+                                <field name="garden_area" attrs="{'invisible':[('garden','==',False)]}"/>
+                                <field name="garden_orientation"/>
+                                <field name="total_area"/>
+                            </group>
+                        </page>
+                        <page name="other_info" string="Other Info">
+                            <group>
+                                <field name="buyer"/>
+                                <field name="sales_person"/>
+                                <field name="user_id" />
+                            </group>
+                        </page>
+                        <page name="offers" string="Offers">
+                            <group>
+                                <field name="offer_ids"/>
+                            </group>
+
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_kanban_view" model="ir.ui.view">
+        <field name="name">kanaban_view</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="row mb4">
+                                <div class="col-6 o_kanban_record_headings">
+                                    <strong>
+                                        <span>
+                                            <field name="name"/>
+                                            <div>
+                                                <field name="property_type_id"/>
+                                            </div>
+
+                                        </span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!--    serach-->
+
+
+    <record id="estate.property_search" model="ir.ui.view">
+        <field name="name">property_search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="property search">
+                <field name="name"/>
+                <field name="bedrooms"/>
+                <field name="postcode"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <filter name="available_properties" string="Available Properties"
+                        domain="[('state', 'in',('new','offer_received')) ]"/>
+                <filter name="group_postcode" string="Postcode" domain="[]" context="{'group_by': 'postcode'}"/>
+
+
+            </search>
+        </field>
+    </record>
+</odoo>

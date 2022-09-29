@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="new_field_action" model="ir.actions.act_window">
+            <field name="name">new_field</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">new.model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="new_model_view_tree" model="ir.ui.view">
+            <field name="name">new_model_view_tree</field>
+            <field name="model">new.model</field>
+            <field name="arch" type="xml">
+                <tree string="new_model_tree">
+                    <field name="demo_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="new_model_view_form" model="ir.ui.view">
+            <field name="name">new_model_view_form</field>
+            <field name="model">new.model</field>
+            <field name="arch" type="xml">
+                <form string="new_model_form">
+                    <sheet>
+                        <group>
+                            <field name="demo_id"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

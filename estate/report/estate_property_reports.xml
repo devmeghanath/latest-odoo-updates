@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        <report-->
+        <!--    id="report_estate_property"-->
+        <!--    string="Estate Property"-->
+        <!--    model="estate.property"-->
+        <!--    report_type="qweb-pdf"-->
+        <!--    file="estate.report_estate_property_template"-->
+        <!--    name="estate.report_estate_property_template"-->
+        <!--/>-->
+        <record id="report_estate_property" model="ir.actions.report">
+            <field name="name">Estate Property</field>
+            <field name="model">estate.property</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">estate.report_estate_property_template</field>
+            <field name="report_file">estate.report_estate_property_template</field>
+            <field name="binding_model_id" ref="model_estate_property"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+
+<!--        <template id="template_id">-->
+<!--       <t t-call="report.html_container">-->
+<!--           <t t-set="doc" t-value="doc.with_context()" />-->
+<!--           <t t-call="report.internal_layout">-->
+<!--               <div class="page" >-->
+<!--                   <t t-call="report.external_layout">-->
+<!--                       #add the body here-->
+<!--                   </t>-->
+<!--               </div>-->
+<!--           </t>-->
+<!--       </t>-->
+<!--</template>-->
+<!--<report-->
+<!--    id="report_id"-->
+<!--    string="String to display"-->
+<!--    model="model_name"-->
+<!--    report_type="qweb-pdf"-->
+<!--    file="module_name.template_id"-->
+<!--    name="module_name.template_id"-->
+<!--/>-->
+
+
+    </data>
+</odoo>

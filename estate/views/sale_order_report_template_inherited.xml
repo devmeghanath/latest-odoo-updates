@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="inherited_sale_order_view" inherit_id="sale.report_saleorder_document">
+<!--                <xpath expr="//div[2]" position="inside">-->
+<!--&lt;!&ndash;                     <strong class="mr16">Subtotal</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <span t-field="doc.property_id"/>&ndash;&gt;-->
+<!--                    <div class="col-auto col-3 mw-100 mb-2">-->
+<!--                    <strong>Estate Property:</strong>-->
+<!--                    <p class="m-0" t-field="doc.property_id"/>-->
+<!--                    </div>-->
+
+<!--                </xpath> -->
+            <xpath expr="//t[@t-call='web.external_layout']/div[@class='page']/div[2]//div[5]" position="after">
+<!--                     <strong class="mr16">Subtotal</strong>-->
+<!--                     <span t-field="doc.property_id"/>-->
+                    <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Estate Property:</strong>
+                    <p class="m-0" t-field="doc.property_id"/>
+                    </div>
+
+                </xpath>
+            <xpath expr="//t[@t-call='web.external_layout']/div[@class='page']/div[2]//div[2]" position="after">
+<!--                     <strong class="mr16">Subtotal</strong>-->
+<!--                     <span t-field="doc.property_id"/>-->
+                    <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Estate Property:</strong>
+                    <p class="m-0" t-field="doc.property_id"/>
+                    </div>
+
+                </xpath>
+            <xpath expr="//t[@t-call='web.external_layout']/div[@class='page']/h2[@class='mt16']" position="after">
+<!--                     <strong class="mr16">Subtotal</strong>-->
+<!--                     <span t-field="doc.property_id"/>-->
+                    <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Estate Property:</strong>
+                    <p class="m-0" t-field="doc.property_id"/>
+                    </div>
+
+                </xpath>
+
+
+
+    </template>
+
+    </data>
+</odoo>

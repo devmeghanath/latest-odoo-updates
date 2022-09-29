@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="estate_property_root"
+                  name="Estate"
+                  sequence="0"/>
+        <!-- This Menu Item Must have a parent -->
+            <menuitem id="advertisement_menu"
+                      name="Advertisement"
+                      parent="estate_property_root"
+                      sequence="0"/>
+        <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="property_action_menu"
+                          name="Property"
+                          parent="advertisement_menu"
+                          action="estate_property_view"
+                          sequence="0"/>
+        <!-- This Menu Item Must have a parent -->
+            <menuitem id="settings_menu"
+                      name="Settings"
+                      parent="estate_property_root"
+                      sequence="1"/>
+        <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="property_type_action_menu"
+                          name="Property Type"
+                          parent="settings_menu"
+                          action="property_type_action"
+                          sequence="0"/>
+                <!-- This Menu Item must have a parent and an action -->
+                <menuitem id="property_tag_action_menu"
+                          name="Porperty Tag"
+                          parent="settings_menu" action="property_tag_action" sequence="1"/>
+
+                <!--    view for deleting the property            -->
+<!--                <menuitem id="delete_property_menu"-->
+<!--                          name="Delete property"-->
+<!--                          parent="settings_menu"-->
+<!--                          action="delete_property_action"-->
+<!--                          sequence="2"/>-->
+
+
+
+    </data>
+</odoo>

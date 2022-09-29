@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_estate_property_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+
+                        <div>
+                            <span t-esc="doc.name"></span>
+                        </div>
+                        <div>
+                            <span t-esc="doc.expected_price"></span>
+                        </div>
+                        <div>
+                            <span t-field="doc.image" t-options='{"widget": "image", "style":"width: 150px;height: 150px"}'/>
+<!--                            <span t-field="line.image" t-options='{"widget": "image"}'/>-->
+<!--                            "style":"width: 150px;height: 150px"-->
+
+                        </div>
+
+
+                    </t>
+                </t>
+
+            </t>
+        </template>
+
+
+    </data>
+</odoo>
